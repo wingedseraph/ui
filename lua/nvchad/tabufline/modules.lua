@@ -52,7 +52,7 @@ end
 
 local function add_fileInfo(name, bufnr)
   if devicons_present then
-    local icon, icon_hl = devicons.get_icon(name)
+    local icon, icon_hl = "", ""
 
     if not icon then
       icon = "󰈚"
@@ -185,8 +185,8 @@ M.tablist = function()
     local new_tabtn = "%#TblineTabNewBtn#" .. "%@TbNewTab@  %X"
     local tabstoggleBtn = "%@TbToggleTabs@ %#TBTabTitle# TABS %X"
 
-    return vim.g.TbTabsToggled == 1 and tabstoggleBtn:gsub("()", { [36] = " " })
-      or new_tabtn .. tabstoggleBtn .. result
+    -- return vim.g.TbTabsToggled == 1 and tabstoggleBtn:gsub("()", { [36] = " " })
+    -- or new_tabtn .. tabstoggleBtn .. result
   end
 
   return ""
@@ -203,7 +203,7 @@ M.run = function()
     M.NvimTreeOverlay(),
     M.bufferlist(),
     M.tablist(),
-    M.buttons(),
+    -- M.buttons(),
   }
 
   if tabufline_config.overriden_modules then
