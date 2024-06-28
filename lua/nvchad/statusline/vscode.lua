@@ -61,7 +61,7 @@ M.mode = function()
   end
 
   local m = vim.api.nvim_get_mode().mode
-  return "%#St_Mode#" .. string.format("  %s ", M.modes[m])
+  return "%#St_Mode#" .. string.format(" %s ", M.modes[m])
 end
 
 M.fileInfo = function()

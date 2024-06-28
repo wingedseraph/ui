@@ -1,8 +1,8 @@
 local new_cmd = vim.api.nvim_create_user_command
 local config = require("core.utils").load_config().ui
 
--- vim.opt.statusline = "%!v:lua.require('nvchad.statusline." .. config.statusline.theme .. "').run()"
-
+-- comment it out if you don't want to use it statusline
+vim.opt.statusline = "%!v:lua.require('nvchad.statusline.colored').run()"
 if config.tabufline.enabled then
   require "nvchad.tabufline.lazyload"
 end

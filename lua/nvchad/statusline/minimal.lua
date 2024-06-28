@@ -1,21 +1,21 @@
 local fn = vim.fn
 local config = require("core.utils").load_config().ui.statusline
-local sep_style = config.separator_style
+-- local sep_style = config.separator_style
 
-sep_style = (sep_style ~= "round" and sep_style ~= "block") and "block" or sep_style
+-- sep_style = (sep_style ~= "round" and sep_style ~= "block") and "block" or sep_style
 
 local default_sep_icons = {
   round = { left = "", right = "" },
   block = { left = "█", right = "█" },
 }
 
-local separators = (type(sep_style) == "table" and sep_style) or default_sep_icons[sep_style]
+-- local separators = (type(sep_style) == "table" and sep_style) or default_sep_icons[sep_style]
 
-local sep_l = separators["left"]
-local sep_r = "%#St_sep_r#" .. separators["right"] .. " %#ST_EmptySpace#"
+-- local sep_l = separators["left"]
+-- local sep_r = "%#St_sep_r#" .. separators["right"] .. " %#ST_EmptySpace#"
 
 local function gen_block(icon, txt, sep_l_hlgroup, iconHl_group, txt_hl_group)
-  return sep_l_hlgroup .. sep_l .. iconHl_group .. icon .. " " .. txt_hl_group .. " " .. txt .. sep_r
+  return sep_l_hlgroup .. " " .. iconHl_group .. icon .. " " .. txt_hl_group .. " " .. txt .. " "
 end
 
 local function stbufnr()
@@ -80,7 +80,7 @@ M.mode = function()
   local m = vim.api.nvim_get_mode().mode
 
   return gen_block(
-    "",
+    "",
     M.modes[m][1],
     "%#" .. M.modes[m][2] .. "Sep#",
     "%#" .. M.modes[m][2] .. "#",
@@ -223,5 +223,5 @@ M.run = function()
 
   return table.concat(modules)
 end
-
+vim.opt.showmode = false
 return M
